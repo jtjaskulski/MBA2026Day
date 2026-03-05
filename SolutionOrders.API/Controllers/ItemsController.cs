@@ -1,22 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using SolutionOrders.API.Features.Items.Messages.DTOs;
+using SolutionOrders.API.Features.Items.Messages.Queries;
 
 namespace SolutionOrders.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ItemsController : ControllerBase
+    public class ItemsController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        //[ProducesResponseType(typeof(IEnumerable<ItemDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<ItemDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllItems()
         {
+            // Creation of Query
+            var query = new GetAllItemsQuery();
             
-            throw new NotImplementedException();
-            // // Tworzymy Query
-            // var query = new GetAllItemsQuery();
-            //
-            // // Wysyłamy do MediatR
-            // return Ok(await mediator.Send(query));
+            // Sending to MediatR
+            return Ok(await mediator.Send(query));
         }
 
         /// <summary>

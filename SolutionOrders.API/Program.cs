@@ -1,7 +1,8 @@
-
 using Microsoft.EntityFrameworkCore;
 using SolutionOrders.API.Models.Data;
 using System.Reflection;
+using Mapster;
+using SolutionOrders.API.Features.Items.Providers;
 
 namespace SolutionOrders.API
 {
@@ -34,7 +35,12 @@ namespace SolutionOrders.API
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext")));
             // MediatR
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-
+            
+            // Providers
+            builder.Services.AddScoped<IItemProvider, ItemProvider>();
+            
+            // Mapster
+            TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
         }
 
         private static void InitializeDevelopmentEnviroment(WebApplication app)
