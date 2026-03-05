@@ -1,4 +1,8 @@
 
+using Microsoft.EntityFrameworkCore;
+using SolutionOrders.API.Models.Data;
+using System.Reflection;
+
 namespace SolutionOrders.API
 {
     public class Program
@@ -11,9 +15,14 @@ namespace SolutionOrders.API
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi(); 
+            builder.Services.AddOpenApi();
 
+            // DbContext
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext")));
 
+            // MediatR
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -30,6 +39,20 @@ namespace SolutionOrders.API
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                try
+                {
+                    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                    dbContext.Database.Migrate();
+                }
+                catch (Exception ex)
+                {
+                    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "Błąd podczas migracji bazy danych");
+                }
+            }
 
 
             app.MapControllers();
