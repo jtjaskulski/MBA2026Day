@@ -24,9 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Items\Handlers\Commands\" />
-    <Folder Include="Features\Items\Messages\Commands\" />
-    <Folder Include="Features\Items\Services\" />
     <Folder Include="Features\Items\Validators\" />
     <Folder Include="Models\" />
   </ItemGroup>

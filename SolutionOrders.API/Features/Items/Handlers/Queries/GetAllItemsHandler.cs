@@ -6,19 +6,12 @@ using SolutionOrders.API.Features.Items.Providers;
 
 namespace SolutionOrders.API.Features.Items.Handlers.Queries
 {
-    public class GetAllItemsHandler: IRequestHandler<GetAllItemsQuery, IEnumerable<ItemDto>>
+    public class GetAllItemsHandler(IItemProvider itemProvider)
+        : IRequestHandler<GetAllItemsQuery, IEnumerable<ItemDto>>
     {
-        private readonly IItemProvider _itemProvider;
-
-        public GetAllItemsHandler(IItemProvider itemProvider)
-        {
-            _itemProvider = itemProvider;
-        }
-
-        public async Task<IEnumerable<ItemDto>> Handle(GetAllItemsQuery request, CancellationToken cancellationToken)
-        {
-            return (await _itemProvider.GetAllItemsAsync(true ,cancellationToken))
-                .Adapt<IEnumerable<ItemDto>>();
-        }
+        public async Task<IEnumerable<ItemDto>> Handle(GetAllItemsQuery request, CancellationToken cancellationToken) 
+            =>
+            (await itemProvider.GetAllItemsAsync(true ,cancellationToken))
+            .Adapt<IEnumerable<ItemDto>>();
     }
 }

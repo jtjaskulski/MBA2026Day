@@ -3,6 +3,7 @@ using SolutionOrders.API.Models.Data;
 using System.Reflection;
 using Mapster;
 using SolutionOrders.API.Features.Items.Providers;
+using SolutionOrders.API.Features.Items.Services;
 
 namespace SolutionOrders.API
 {
@@ -38,6 +39,9 @@ namespace SolutionOrders.API
             
             // Providers
             builder.Services.AddScoped<IItemProvider, ItemProvider>();
+            
+            // Services
+            builder.Services.AddScoped<IItemService, ItemService>();
             
             // Mapster
             TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
