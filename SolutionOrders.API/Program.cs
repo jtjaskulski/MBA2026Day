@@ -17,7 +17,7 @@ namespace SolutionOrders.API
 
            var app = builder.Build();
             InitializeAutomaticMigrations(app);
-            InitializeDevelopmentEnviroment(app);
+            InitializeDevelopmentEnvironment(app);
 
             app.UseHttpsRedirection();
             app.UseAuthorization();
@@ -47,7 +47,7 @@ namespace SolutionOrders.API
             TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
         }
 
-        private static void InitializeDevelopmentEnviroment(WebApplication app)
+        private static void InitializeDevelopmentEnvironment(WebApplication app)
         {
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -63,19 +63,27 @@ namespace SolutionOrders.API
 
         private static void InitializeAutomaticMigrations(WebApplication app)
         {
-            using (var scope = app.Services.CreateScope())
+            var retryCount = 5;
+            using var scope = app.Services.CreateScope();
+            var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+            var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+            for (int i = 0; i < retryCount; i++)
             {
                 try
                 {
-                    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                     dbContext.Database.Migrate();
+                    logger.LogInformation("Database migrations applied successfully.");
+                    return;
                 }
                 catch (Exception ex)
                 {
-                    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "Exception during applying the migrations.");
+                    logger.LogWarning(ex, "Migration attempt {Attempt}/{MaxRetries} failed. Retrying in 5s...", i + 1, retryCount);
+                    Task.Delay(5000);
                 }
             }
+
+            logger.LogError("Could not apply migrations after {MaxRetries} attempts.", retryCount);
         }
     }
 }
