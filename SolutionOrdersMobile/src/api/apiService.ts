@@ -1,4 +1,3 @@
-
 import { API_BASE_URL } from './config';
 import type {
   UnitOfMeasurement,
@@ -142,29 +141,29 @@ class ApiService {
   // ========== PRODUKTY (ITEMS) ==========
 
   async getItems(): Promise<Item[]> {
-    return this.request<Item[]>('/Item');
+    return this.request<Item[]>('/Items');
   }
 
   async getItem(id: number): Promise<Item> {
-    return this.request<Item>(`/Item/${id}`);
+    return this.request<Item>(`/Items/${id}`);
   }
 
   async createItem(data: CreateItemRequest): Promise<{ id: number }> {
-    return this.request<{ id: number }>('/Item', {
+    return this.request<{ id: number }>('/Items', {
       method: 'POST',
       body: JSON.stringify(data),
     });
   }
 
   async updateItem(id: number, data: UpdateItemRequest): Promise<void> {
-    return this.request<void>(`/Item/${id}`, {
+    return this.request<void>(`/Items/${id}`, {
       method: 'PUT',
       body: JSON.stringify(data),
     });
   }
 
   async deleteItem(id: number): Promise<void> {
-    return this.request<void>(`/Item/${id}`, {
+    return this.request<void>(`/Items/${id}`, {
       method: 'DELETE',
     });
   }
