@@ -14,8 +14,9 @@ namespace SolutionOrders.API
             var builder = WebApplication.CreateBuilder(args);
 
             InitializeServicesAndDbContext(builder);
+            SetUpCorsPolicyForDevelopment(builder);
 
-           var app = builder.Build();
+            var app = builder.Build();
             InitializeAutomaticMigrations(app);
             InitializeDevelopmentEnvironment(app);
 
@@ -23,6 +24,21 @@ namespace SolutionOrders.API
             app.UseAuthorization();
             app.MapControllers();
             app.Run();
+        }
+
+        private static void SetUpCorsPolicyForDevelopment(WebApplicationBuilder builder)
+        {
+            if (builder.Environment.IsDevelopment())
+            {
+                builder.Services.AddCors(options =>
+                {
+                    options.AddPolicy("AllowAll",
+                        policy => policy
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader());
+                });
+            }
         }
 
         private static void InitializeServicesAndDbContext(WebApplicationBuilder builder)
@@ -53,7 +69,7 @@ namespace SolutionOrders.API
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
-
+                app.UseCors("AllowAll");
                 app.UseSwaggerUI(options =>
                 {
                     options.SwaggerEndpoint("/openapi/v1.json", "v1");
