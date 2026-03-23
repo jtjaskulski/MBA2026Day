@@ -4,6 +4,7 @@ using System.Reflection;
 using Mapster;
 using SolutionOrders.API.Features.Items.Providers;
 using SolutionOrders.API.Features.Items.Services;
+using System.Threading;
 
 namespace SolutionOrders.API
 {
@@ -95,7 +96,7 @@ namespace SolutionOrders.API
                 catch (Exception ex)
                 {
                     logger.LogWarning(ex, "Migration attempt {Attempt}/{MaxRetries} failed. Retrying in 5s...", i + 1, retryCount);
-                    Task.Delay(5000);
+                    Thread.Sleep(5000);
                 }
             }
 
