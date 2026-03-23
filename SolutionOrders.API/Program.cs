@@ -84,6 +84,7 @@ namespace SolutionOrders.API
             using var scope = app.Services.CreateScope();
             var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
             var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            Exception? lastException = null;
 
             for (int i = 0; i < retryCount; i++)
             {
@@ -95,12 +96,14 @@ namespace SolutionOrders.API
                 }
                 catch (Exception ex)
                 {
+                    lastException = ex;
                     logger.LogWarning(ex, "Migration attempt {Attempt}/{MaxRetries} failed. Retrying in 5s...", i + 1, retryCount);
                     Thread.Sleep(5000);
                 }
             }
 
             logger.LogError("Could not apply migrations after {MaxRetries} attempts.", retryCount);
+            throw new InvalidOperationException("Failed to apply database migrations after multiple attempts. Aborting application startup.", lastException);
         }
     }
 }
