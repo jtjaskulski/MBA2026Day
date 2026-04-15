@@ -3,9 +3,15 @@ using SolutionOrders.API.Models.Data;
 using System.Reflection;
 using Mapster;
 using SolutionOrders.API.Features.Categories.Providers;
+using SolutionOrders.API.Features.Clients.Providers;
+using SolutionOrders.API.Features.Clients.Services;
 using SolutionOrders.API.Features.Items.Providers;
 using SolutionOrders.API.Features.Items.Services;
+using SolutionOrders.API.Features.Orders.Providers;
+using SolutionOrders.API.Features.Orders.Services;
 using SolutionOrders.API.Features.UnitOfMeasurements.Providers;
+using SolutionOrders.API.Features.Workers.Providers;
+using SolutionOrders.API.Features.Workers.Services;
 
 namespace SolutionOrders.API
 {
@@ -59,9 +65,15 @@ namespace SolutionOrders.API
             builder.Services.AddScoped<IItemProvider, ItemProvider>();
             builder.Services.AddScoped<ICategoryProvider, CategoryProvider>();
             builder.Services.AddScoped<IUnitOfMeasurementProvider, UnitOfMeasurementProvider>();
+            builder.Services.AddScoped<IClientProvider, ClientProvider>();
+            builder.Services.AddScoped<IWorkerProvider, WorkerProvider>();
+            builder.Services.AddScoped<IOrderProvider, OrderProvider>();
             
             // Services
             builder.Services.AddScoped<IItemService, ItemService>();
+            builder.Services.AddScoped<IClientService, ClientService>();
+            builder.Services.AddScoped<IWorkerService, WorkerService>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
             
             // Mapster
             TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());

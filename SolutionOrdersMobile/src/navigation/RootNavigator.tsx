@@ -7,6 +7,8 @@ import {
 import ItemsScreen from '../screens/items/ItemsScreen';
 import CreateItemScreen from '../screens/items/CreateItemScreen';
 import EditItemScreen from '../screens/items/EditItemScreen';
+import CartScreen from '../screens/cart/CartScreen';
+import CreateOrderScreen from '../screens/orders/CreateOrderScreen';
 import { RootStackParamList } from './types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -35,6 +37,16 @@ function RootNavigator(): React.JSX.Element {
           name="EditItem"
           component={EditItemScreen}
           options={{ title: 'Edit Item' }}
+        />
+        <Stack.Screen
+          name="Cart"
+          component={CartScreen}
+          options={{ title: 'Cart' }}
+        />
+        <Stack.Screen
+          name="CreateOrder"
+          component={CreateOrderScreen}
+          options={{ title: 'Create Order' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

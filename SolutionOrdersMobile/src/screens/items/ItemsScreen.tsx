@@ -8,6 +8,7 @@ import {
   Alert,
 } from 'react-native';
 import { useItems } from '../../context/ItemsContext';
+import { useCart } from '../../context/CartContext';
 import type { Item } from '../../types/models';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -17,6 +18,12 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Items'>;
 
 function ItemsScreen({ navigation }: Props) {
   const { items, loading, error, deleteItem } = useItems();
+  const { addToCart, getCartCount } = useCart();
+
+  const handleAddToCart = (item: Item) => {
+    addToCart(item);
+    Alert.alert('Added', `${item.name} added to cart`);
+  };
 
   const handleDelete = (item: Item) => {
     Alert.alert(
@@ -61,6 +68,12 @@ function ItemsScreen({ navigation }: Props) {
 
       <View style={styles.itemActions}>
         <TouchableOpacity
+          style={styles.cartButton}
+          onPress={() => handleAddToCart(item)}
+        >
+          <Text style={styles.buttonText}>+Cart</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
           style={styles.editButton}
           onPress={() => handleEdit(item)}
         >
@@ -97,12 +110,22 @@ function ItemsScreen({ navigation }: Props) {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Items ({items.length})</Text>
-        <TouchableOpacity
-          style={styles.addButton}
-          onPress={() => navigation.navigate('CreateItem')}
-        >
-          <Text style={styles.addButtonText}>+ Add</Text>
-        </TouchableOpacity>
+        <View style={styles.headerButtons}>
+          <TouchableOpacity
+            style={styles.cartHeaderButton}
+            onPress={() => navigation.navigate('Cart')}
+          >
+            <Text style={styles.cartHeaderButtonText}>
+              Cart ({getCartCount()})
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.addButton}
+            onPress={() => navigation.navigate('CreateItem')}
+          >
+            <Text style={styles.addButtonText}>+ Add</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       <FlatList
@@ -151,6 +174,20 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: '#333',
+  },
+  headerButtons: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  cartHeaderButton: {
+    backgroundColor: '#FF9800',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 8,
+  },
+  cartHeaderButtonText: {
+    color: '#fff',
+    fontWeight: '600',
   },
   addButton: {
     backgroundColor: '#007AFF',
@@ -204,6 +241,12 @@ const styles = StyleSheet.create({
   itemActions: {
     flexDirection: 'row',
     columnGap: 8,  // gap wspierany od RN 0.71+
+  },
+  cartButton: {
+    backgroundColor: '#FF9800',
+    padding: 10,
+    borderRadius: 6,
+    justifyContent: 'center',
   },
   editButton: {
     backgroundColor: '#4CAF50',
