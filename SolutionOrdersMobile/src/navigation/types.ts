@@ -17,6 +17,7 @@ export type RootStackParamList = {
   Clients: undefined;
   Workers: undefined;
   Orders: undefined;
-  CreateOrder: undefined;
+  CreateOrder: undefined;  
+  Cart: undefined;
   EditOrder: { orderId: number };
 };
