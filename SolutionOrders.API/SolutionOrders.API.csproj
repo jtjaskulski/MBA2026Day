@@ -24,7 +24,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Categories\Handlers\Commands\" />
+    <Folder Include="Features\Categories\Messages\Commands\" />
+    <Folder Include="Features\Categories\Services\" />
+    <Folder Include="Features\Categories\Validators\" />
     <Folder Include="Features\Items\Validators\" />
+    <Folder Include="Features\UnitOfMeasurements\Handlers\Commands\" />
+    <Folder Include="Features\UnitOfMeasurements\Messages\Commands\" />
+    <Folder Include="Features\UnitOfMeasurements\Services\" />
+    <Folder Include="Features\UnitOfMeasurements\Validators\" />
     <Folder Include="Models\" />
   </ItemGroup>
 

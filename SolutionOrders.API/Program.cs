@@ -2,9 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using SolutionOrders.API.Models.Data;
 using System.Reflection;
 using Mapster;
+using SolutionOrders.API.Features.Categories.Providers;
 using SolutionOrders.API.Features.Items.Providers;
 using SolutionOrders.API.Features.Items.Services;
-using System.Threading;
+using SolutionOrders.API.Features.UnitOfMeasurements.Providers;
 
 namespace SolutionOrders.API
 {
@@ -56,6 +57,8 @@ namespace SolutionOrders.API
             
             // Providers
             builder.Services.AddScoped<IItemProvider, ItemProvider>();
+            builder.Services.AddScoped<ICategoryProvider, CategoryProvider>();
+            builder.Services.AddScoped<IUnitOfMeasurementProvider, UnitOfMeasurementProvider>();
             
             // Services
             builder.Services.AddScoped<IItemService, ItemService>();

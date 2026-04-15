@@ -6,18 +6,18 @@ import { RootStackParamList } from '../navigation/types';
 type Props = NativeStackScreenProps<RootStackParamList, 'Details'>;
 
 const DetailsScreen: React.FC<Props> = ({ route, navigation }) => {
-  // Pobierz parametry z route
+  // Get parameters from route
   const { itemId, itemName } = route.params;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Szczegóły Produktu</Text>
+      <Text style={styles.title}>Details of product</Text>
       
       <Text style={styles.info}>ID: {itemId}</Text>
-      <Text style={styles.info}>Nazwa: {itemName}</Text>
+      <Text style={styles.info}>Name: {itemName}</Text>
 
       <Button 
-        title="Wróć" 
+        title="Back to Home" 
         onPress={() => navigation.goBack()}
       />
     </View>
