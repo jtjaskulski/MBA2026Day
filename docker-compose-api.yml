@@ -11,9 +11,14 @@ services:
       - ASPNETCORE_URLS=http://+:8080
       - ASPNETCORE_HTTP_PORTS=8080
       - ConnectionStrings__ApplicationDbContext=Server=sqlserver;Database=PMAB;User=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True
+      # Matches Program.cs defaults for Mongo read projections (MongoClient + database name).
+      - ConnectionStrings__MongoDb=mongodb://mongo:27017
+      - MongoDb__DatabaseName=SolutionOrdersRead
     depends_on:
       sqlserver:
         condition: service_healthy
+      mongo:
+        condition: service_started
     networks:
       - dev-network
 
@@ -36,6 +41,14 @@ services:
       timeout: 10s
       retries: 10
       start_period: 30s
+
+  mongo:
+    image: mongo:7
+    container_name: PMAB2026Day-mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - dev-network
 
 networks:
   dev-network:

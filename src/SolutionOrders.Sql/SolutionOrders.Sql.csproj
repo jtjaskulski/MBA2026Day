@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\SolutionOrders.Core\SolutionOrders.Core.csproj" />
+    <ProjectReference Include="..\Modules\Categories\SolutionOrders.Categories.Domain\SolutionOrders.Categories.Domain.csproj" />
+    <ProjectReference Include="..\Modules\Categories\SolutionOrders.Categories.Persistence\SolutionOrders.Categories.Persistence.csproj" />
+    <ProjectReference Include="..\Modules\Clients\SolutionOrders.Clients.Domain\SolutionOrders.Clients.Domain.csproj" />
+    <ProjectReference Include="..\Modules\Clients\SolutionOrders.Clients.Persistence\SolutionOrders.Clients.Persistence.csproj" />
+    <ProjectReference Include="..\Modules\Items\SolutionOrders.Items.Domain\SolutionOrders.Items.Domain.csproj" />
+    <ProjectReference Include="..\Modules\Items\SolutionOrders.Items.Persistence\SolutionOrders.Items.Persistence.csproj" />
+    <ProjectReference Include="..\Modules\Orders\SolutionOrders.Orders.Domain\SolutionOrders.Orders.Domain.csproj" />
+    <ProjectReference Include="..\Modules\Orders\SolutionOrders.Orders.Persistence\SolutionOrders.Orders.Persistence.csproj" />
+    <ProjectReference Include="..\Modules\UnitOfMeasurements\SolutionOrders.UnitOfMeasurements.Domain\SolutionOrders.UnitOfMeasurements.Domain.csproj" />
+    <ProjectReference Include="..\Modules\UnitOfMeasurements\SolutionOrders.UnitOfMeasurements.Persistence\SolutionOrders.UnitOfMeasurements.Persistence.csproj" />
+    <ProjectReference Include="..\Modules\Workers\SolutionOrders.Workers.Domain\SolutionOrders.Workers.Domain.csproj" />
+    <ProjectReference Include="..\Modules\Workers\SolutionOrders.Workers.Persistence\SolutionOrders.Workers.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.3" />
+    <PackageReference Include="MongoDB.Driver" Version="3.5.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

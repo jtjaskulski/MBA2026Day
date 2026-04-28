@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\SolutionOrders.Shared\SolutionOrders.Shared.csproj" />
+    <ProjectReference Include="..\..\..\SolutionOrders.Core\SolutionOrders.Core.csproj" />
+    <ProjectReference Include="..\..\Categories\SolutionOrders.Categories.Domain\SolutionOrders.Categories.Domain.csproj" />
+    <ProjectReference Include="..\..\UnitOfMeasurements\SolutionOrders.UnitOfMeasurements.Domain\SolutionOrders.UnitOfMeasurements.Domain.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
