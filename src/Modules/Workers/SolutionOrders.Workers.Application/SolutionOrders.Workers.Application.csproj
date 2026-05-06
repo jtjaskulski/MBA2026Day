@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\SolutionOrders.Workers.Domain\SolutionOrders.Workers.Domain.csproj" />
+    <ProjectReference Include="..\SolutionOrders.Workers.Core\SolutionOrders.Workers.Core.csproj" />
+    <ProjectReference Include="..\..\..\Shared\SolutionOrders.Shared\SolutionOrders.Shared.csproj" />
+    <ProjectReference Include="..\..\..\SolutionOrders.Core\SolutionOrders.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="MediatR" Version="14.0.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
