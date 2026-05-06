@@ -63,3 +63,72 @@ export interface UpdateItemRequest extends CreateItemRequest {
   idItem: number;
   isActive: boolean;
 }
+
+// Client requests
+export interface CreateClientRequest {
+  name: string;
+  address?: string;
+  phoneNumber?: string;
+}
+
+export interface UpdateClientRequest extends CreateClientRequest {
+  idClient: number;
+  isActive: boolean;
+}
+
+// Worker requests
+export interface CreateWorkerRequest {
+  firstName: string;
+  lastName: string;
+  login: string;
+}
+
+export interface UpdateWorkerRequest extends CreateWorkerRequest {
+  idWorker: number;
+  isActive: boolean;
+}
+
+// Order
+export interface OrderItem {
+  idOrderItem: number;
+  idItem: number;
+  itemName: string | null;
+  quantity: number | null;
+  price: number | null;
+  isActive: boolean;
+}
+
+export interface Order {
+  idOrder: number;
+  dataOrder: string | null;
+  idClient: number | null;
+  clientName: string | null;
+  idWorker: number | null;
+  workerName: string | null;
+  notes: string | null;
+  deliveryDate: string | null;
+  orderItems: OrderItem[];
+}
+
+export interface CreateOrderItemRequest {
+  idItem: number;
+  quantity: number;
+}
+
+export interface CreateOrderRequest {
+  idClient?: number;
+  idWorker?: number;
+  notes?: string;
+  deliveryDate?: string;
+  orderItems: CreateOrderItemRequest[];
+}
+
+export interface UpdateOrderRequest extends CreateOrderRequest {
+  idOrder: number;
+}
+
+// Cart (local only)
+export interface CartItem {
+  item: Item;
+  quantity: number;
+}

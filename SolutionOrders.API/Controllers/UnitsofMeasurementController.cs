@@ -11,7 +11,7 @@ namespace SolutionOrders.API.Controllers
     {
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<UnitOfMeasurementDto>), StatusCodes.Status200OK)]
-        public async Task<IActionResult> GetAllCategories()
+        public async Task<IActionResult> GetAllUnitOfMeasurements()
         {
             // Creation of Query
             var query = new GetAllUnitOfMeasurementsQuery();
