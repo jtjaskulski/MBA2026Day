@@ -1,0 +1,53 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SolutionOrders.Core/SolutionOrders.Core.csproj" />
+    <Project Path="src/SolutionOrders.Sql/SolutionOrders.Sql.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/Categories/">
+    <Project Path="src/Modules/Categories/SolutionOrders.Categories.Application/SolutionOrders.Categories.Application.csproj" />
+    <Project Path="src/Modules/Categories/SolutionOrders.Categories.Core/SolutionOrders.Categories.Core.csproj" />
+    <Project Path="src/Modules/Categories/SolutionOrders.Categories.Domain/SolutionOrders.Categories.Domain.csproj" />
+    <Project Path="src/Modules/Categories/SolutionOrders.Categories.Infrastructure/SolutionOrders.Categories.Infrastructure.csproj" />
+    <Project Path="src/Modules/Categories/SolutionOrders.Categories.Persistence/SolutionOrders.Categories.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Clients/">
+    <Project Path="src/Modules/Clients/SolutionOrders.Clients.Application/SolutionOrders.Clients.Application.csproj" />
+    <Project Path="src/Modules/Clients/SolutionOrders.Clients.Core/SolutionOrders.Clients.Core.csproj" />
+    <Project Path="src/Modules/Clients/SolutionOrders.Clients.Domain/SolutionOrders.Clients.Domain.csproj" />
+    <Project Path="src/Modules/Clients/SolutionOrders.Clients.Infrastructure/SolutionOrders.Clients.Infrastructure.csproj" />
+    <Project Path="src/Modules/Clients/SolutionOrders.Clients.Persistence/SolutionOrders.Clients.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Items/">
+    <Project Path="src/Modules/Items/SolutionOrders.Items.Application/SolutionOrders.Items.Application.csproj" />
+    <Project Path="src/Modules/Items/SolutionOrders.Items.Core/SolutionOrders.Items.Core.csproj" />
+    <Project Path="src/Modules/Items/SolutionOrders.Items.Domain/SolutionOrders.Items.Domain.csproj" />
+    <Project Path="src/Modules/Items/SolutionOrders.Items.Infrastructure/SolutionOrders.Items.Infrastructure.csproj" />
+    <Project Path="src/Modules/Items/SolutionOrders.Items.Persistence/SolutionOrders.Items.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Orders/">
+    <Project Path="src/Modules/Orders/SolutionOrders.Orders.Application/SolutionOrders.Orders.Application.csproj" />
+    <Project Path="src/Modules/Orders/SolutionOrders.Orders.Core/SolutionOrders.Orders.Core.csproj" />
+    <Project Path="src/Modules/Orders/SolutionOrders.Orders.Domain/SolutionOrders.Orders.Domain.csproj" />
+    <Project Path="src/Modules/Orders/SolutionOrders.Orders.Infrastructure/SolutionOrders.Orders.Infrastructure.csproj" />
+    <Project Path="src/Modules/Orders/SolutionOrders.Orders.Persistence/SolutionOrders.Orders.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/UnitOfMeasurements/">
+    <Project Path="src/Modules/UnitOfMeasurements/SolutionOrders.UnitOfMeasurements.Application/SolutionOrders.UnitOfMeasurements.Application.csproj" />
+    <Project Path="src/Modules/UnitOfMeasurements/SolutionOrders.UnitOfMeasurements.Core/SolutionOrders.UnitOfMeasurements.Core.csproj" />
+    <Project Path="src/Modules/UnitOfMeasurements/SolutionOrders.UnitOfMeasurements.Domain/SolutionOrders.UnitOfMeasurements.Domain.csproj" />
+    <Project Path="src/Modules/UnitOfMeasurements/SolutionOrders.UnitOfMeasurements.Infrastructure/SolutionOrders.UnitOfMeasurements.Infrastructure.csproj" />
+    <Project Path="src/Modules/UnitOfMeasurements/SolutionOrders.UnitOfMeasurements.Persistence/SolutionOrders.UnitOfMeasurements.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Workers/">
+    <Project Path="src/Modules/Workers/SolutionOrders.Workers.Application/SolutionOrders.Workers.Application.csproj" />
+    <Project Path="src/Modules/Workers/SolutionOrders.Workers.Core/SolutionOrders.Workers.Core.csproj" />
+    <Project Path="src/Modules/Workers/SolutionOrders.Workers.Domain/SolutionOrders.Workers.Domain.csproj" />
+    <Project Path="src/Modules/Workers/SolutionOrders.Workers.Infrastructure/SolutionOrders.Workers.Infrastructure.csproj" />
+    <Project Path="src/Modules/Workers/SolutionOrders.Workers.Persistence/SolutionOrders.Workers.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/src/Shared/">
+    <Project Path="src/Shared/SolutionOrders.Shared/SolutionOrders.Shared.csproj" />
+  </Folder>
+  <Project Path="SolutionOrders.API/SolutionOrders.API.csproj" />
+</Solution>

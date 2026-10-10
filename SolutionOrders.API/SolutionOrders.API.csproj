@@ -6,14 +6,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>f2d20b8c-6526-4cf1-882d-3ce8312fe0b6</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Mapster" Version="7.4.0" />
     <PackageReference Include="MediatR" Version="14.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -21,24 +21,27 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.1.4" />
+    <PackageReference Include="MongoDB.Driver" Version="3.5.2" />
   </ItemGroup>
 
+  <!-- Composition root references modular Infrastructure + Sql host DbContext -->
   <ItemGroup>
-    <Folder Include="Features\Categories\Handlers\Commands\" />
-    <Folder Include="Features\Categories\Messages\Commands\" />
-    <Folder Include="Features\Categories\Services\" />
-    <Folder Include="Features\Categories\Validators\" />
-    <Folder Include="Features\Clients\Handlers\Commands\" />
-    <Folder Include="Features\Clients\Handlers\Queries\" />
-    <Folder Include="Features\Clients\Validators\" />
-    <Folder Include="Features\Items\Validators\" />
-    <Folder Include="Features\Orders\Validators\" />
-    <Folder Include="Features\UnitOfMeasurements\Handlers\Commands\" />
-    <Folder Include="Features\UnitOfMeasurements\Messages\Commands\" />
-    <Folder Include="Features\UnitOfMeasurements\Services\" />
-    <Folder Include="Features\UnitOfMeasurements\Validators\" />
-    <Folder Include="Features\Workers\Validators\" />
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\src\Shared\SolutionOrders.Shared\SolutionOrders.Shared.csproj" />
+    <ProjectReference Include="..\src\SolutionOrders.Core\SolutionOrders.Core.csproj" />
+    <ProjectReference Include="..\src\SolutionOrders.Sql\SolutionOrders.Sql.csproj" />
+    <ProjectReference Include="..\src\Modules\Categories\SolutionOrders.Categories.Infrastructure\SolutionOrders.Categories.Infrastructure.csproj" />
+    <ProjectReference Include="..\src\Modules\Clients\SolutionOrders.Clients.Infrastructure\SolutionOrders.Clients.Infrastructure.csproj" />
+    <ProjectReference Include="..\src\Modules\Items\SolutionOrders.Items.Infrastructure\SolutionOrders.Items.Infrastructure.csproj" />
+    <ProjectReference Include="..\src\Modules\Orders\SolutionOrders.Orders.Infrastructure\SolutionOrders.Orders.Infrastructure.csproj" />
+    <ProjectReference Include="..\src\Modules\UnitOfMeasurements\SolutionOrders.UnitOfMeasurements.Infrastructure\SolutionOrders.UnitOfMeasurements.Infrastructure.csproj" />
+    <ProjectReference Include="..\src\Modules\Workers\SolutionOrders.Workers.Infrastructure\SolutionOrders.Workers.Infrastructure.csproj" />
+    <!-- MediatR discovers handlers from Application assemblies -->
+    <ProjectReference Include="..\src\Modules\Categories\SolutionOrders.Categories.Application\SolutionOrders.Categories.Application.csproj" />
+    <ProjectReference Include="..\src\Modules\Clients\SolutionOrders.Clients.Application\SolutionOrders.Clients.Application.csproj" />
+    <ProjectReference Include="..\src\Modules\Items\SolutionOrders.Items.Application\SolutionOrders.Items.Application.csproj" />
+    <ProjectReference Include="..\src\Modules\Orders\SolutionOrders.Orders.Application\SolutionOrders.Orders.Application.csproj" />
+    <ProjectReference Include="..\src\Modules\UnitOfMeasurements\SolutionOrders.UnitOfMeasurements.Application\SolutionOrders.UnitOfMeasurements.Application.csproj" />
+    <ProjectReference Include="..\src\Modules\Workers\SolutionOrders.Workers.Application\SolutionOrders.Workers.Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,16 @@
+﻿using MediatR;
+
+namespace SolutionOrders.Clients.Application.Messages.Commands
+{
+    public class UpdateClientCommand : IRequest<Unit>
+    {
+        public int IdClient { get; set; }
+        public string? Name { get; set; }
+        public string? Address { get; set; }
+        public string? PhoneNumber { get; set; }
+        public bool IsActive { get; set; }
+    }
+}
+
+
+
